@@ -1,0 +1,51 @@
+{
+  "version": "georisk-2024-native-features-20m-sampling-v1",
+  "source_year": 2024,
+  "source_model": "EcoSignal GeoRisk V2",
+  "model_sha256": "6ec3a4a5e8cd3453f10f8f6b4b84b16dc87fcecccfbf7b0aa5e122bf62c5736d",
+  "portable_model_sha256": "3c119e8fa0e7bb0d479ffbaba36062e54d21afb43b3fd7677c8abd91383e78df",
+  "source_dem_sha256": {
+    "2015": "313107f85c3cc567b0fd6cec11685601f7f77ce55267b8f810f0cb2c29b0db9f",
+    "2022": "f17e9be442c41641cc32e8e1cace19ad19578c43d09c57fdb4d7c23b8a457d71",
+    "2024": "2c2e666c2965636c788067383ccc9c456ad8a9c76169472590fca621bb3371cf"
+  },
+  "feature_implementation_version": "square-footprint-north-grade-v2",
+  "feature_code_sha256": "329954c71ba1b3ffd1a10a528c78c3af0b9eeb6307936737123e4227d0914294",
+  "binary_file": "georisk-2024-samples.u16",
+  "binary_sha256": "cb1bd7e15d47cbbd9d2a4282108061ca17b5d1600c9e13b78c29934f47309ec7",
+  "dtype": "uint16-little-endian",
+  "nodata": 65535,
+  "score_divisor": 10000,
+  "quantization_max_error": 5e-05,
+  "shape": [
+    1536,
+    1638
+  ],
+  "crs": "EPSG:32119",
+  "proj4": "+proj=lcc +lat_0=33.75 +lon_0=-79 +lat_1=36.1666666666667 +lat_2=34.3333333333333 +x_0=609601.22 +y_0=0 +datum=NAD83 +units=m +no_defs +type=crs",
+  "sample_spacing_m": 20,
+  "first_sample_center_xy": [
+    625210.1855380203,
+    246928.84304745495
+  ],
+  "row_direction": "south",
+  "column_direction": "east",
+  "bounds_wgs84": [
+    -78.82763409759329,
+    35.69795304738758,
+    -78.46371247889225,
+    35.97589123264953
+  ],
+  "valid_sample_count": 1473136,
+  "reference": "fixed full common-coverage regular 20m sampling cohort; not the full 1m pixel distribution",
+  "cdf_file": "georisk-reference-cdf.json",
+  "model_portability_parity_max_abs_error": 1.5740870262792583e-07,
+  "limitations": [
+    "Scores are relative uncalibrated terrain-lowering susceptibility, not probabilities.",
+    "Numerical samples spaced 20m; native features computed at 1m from original implementation.",
+    "Nearest sample is a nearby measured-feature location, not an area mean or exact arbitrary-point prediction.",
+    "Missing samples remain nodata; do not fill data boundaries.",
+    "Fixed CDF is representative systematic sampling of common survey coverage; percentiles are relative to this declared cohort.",
+    "Survey vertical reference remains provisional."
+  ]
+}
