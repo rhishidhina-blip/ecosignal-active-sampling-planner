@@ -10,11 +10,56 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / 'scripts'))
-from prepare_osm import indexed_within, indexed_distance, SCREENING_SOURCE
+from prepare_osm import indexed_within, indexed_distance, save_osm_evidence, SCREENING_SOURCE
 from run_preparation import supervise
 
 
 class PreparationTests(unittest.TestCase):
+    def test_streamed_evidence_content_count_and_hash(self):
+        import geopandas as gpd
+        import hashlib
+        from shapely.geometry import Point
+        frame = gpd.GeoDataFrame({'name': ['tree é', None, 'school'], 'tags': [['a','b'], None, ['c']]},
+                                 geometry=[Point(0,0), Point(1,1), Point(2,2)], crs='EPSG:4326')
+        with tempfile.TemporaryDirectory() as d, contextlib.redirect_stdout(io.StringIO()):
+            path = Path(d)/'evidence.geojson'
+            info = save_osm_evidence(frame, path, chunk_size=1)
+            payload = path.read_bytes()
+            self.assertEqual(json.loads(payload), json.loads(frame.to_json(na='drop')))
+            self.assertEqual(info['sha256'], hashlib.sha256(payload).hexdigest())
+            self.assertEqual(info['bytes'], len(payload))
+            self.assertEqual(info['feature_count'], 3)
+
+    def test_streaming_never_converts_complete_frame_or_reads_evidence_back(self):
+        from unittest.mock import patch
+        import geopandas as gpd
+        from shapely.geometry import Point
+        frame = gpd.GeoDataFrame({'name': list(range(13))}, geometry=[Point(i, i) for i in range(13)], crs='EPSG:4326')
+        original = gpd.GeoDataFrame.iterfeatures
+        sizes = []
+        def bounded(part, *args, **kwargs):
+            sizes.append(len(part))
+            return original(part, *args, **kwargs)
+        with tempfile.TemporaryDirectory() as d, contextlib.redirect_stdout(io.StringIO()), \
+             patch.object(gpd.GeoDataFrame, 'to_json', side_effect=AssertionError('whole frame serialization forbidden')), \
+             patch.object(gpd.GeoDataFrame, 'iterfeatures', bounded), \
+             patch.object(Path, 'read_bytes', side_effect=AssertionError('whole file read forbidden')):
+            info = save_osm_evidence(frame, Path(d)/'evidence.geojson', chunk_size=5)
+        self.assertEqual(sizes, [5,5,3])
+        self.assertEqual(info['feature_count'], 13)
+
+    def test_failed_serialization_keeps_previous_evidence_and_cleans_temporary(self):
+        import geopandas as gpd
+        from shapely.geometry import Point
+        frame = gpd.GeoDataFrame({'invalid': [object()]}, geometry=[Point(0,0)], crs='EPSG:4326')
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d)/'evidence.geojson'
+            path.write_text('previous evidence')
+            with self.assertRaises(TypeError):
+                save_osm_evidence(frame, path)
+            self.assertEqual(path.read_text(), 'previous evidence')
+            self.assertEqual(list(Path(d).glob('*.tmp')), [])
+
     def geometries(self):
         import geopandas as gpd
         from shapely.geometry import Point, box

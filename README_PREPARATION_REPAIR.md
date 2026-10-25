@@ -1,4 +1,4 @@
-# EcoSignal planner preparation repair
+# EcoSignal planner preparation repair — revision 2
 
 This patch changes preparation only. It does not change the API, numerical GeoRisk grid/CDF, planner scoring weights, observation rules, Site, audience or secrets.
 
@@ -6,6 +6,13 @@ This patch changes preparation only. It does not change the API, numerical GeoRi
 GitHub run 40148553627 attempts 2 and 3 passed tests, then canceled preparation at about 11m02s and 13m25s. The checked workflow has cancel-in-progress:false and a 45-minute job timeout. These runs therefore did not reach that configured timeout. Public runner annotations only say "The operation was canceled"; the external cancellation trigger is not established. Do not claim this patch can prevent a platform cancellation.
 
 The original script prints its main output only at completion, permits OSMnx recursive retry/rate-limit waits, and constructs expensive study-wide geometry unions. The patch addresses these code weaknesses while retaining all classification and exclusion rules.
+
+## New evidence and second repair
+The next user log proves the live OSM request returned HTTP 200, 406,036.4 kB / 3,640,177 raw elements, built 455,362 features and screened all 10,201 candidate points. Cancellation occurred at "saving OSM source evidence and checksums". Thus this attempt was not stuck in the OSM request or candidate screening. The log still does not prove the external cancellation trigger. Full-frame to_json(), repeated sparse null tags and read_bytes() hashing at that stage create avoidable memory pressure.
+
+Revision 2 streams GeoJSON in 500-feature batches, omits absent tags, hashes each written byte incrementally, emits progress every 10,000 features, atomically replaces completed evidence and removes temporary output on failure. All nonmissing OSM source properties and geometries are retained; the screening inputs/rules are unchanged. Source evidence hashes naturally change with serialization and are recorded from actual written bytes, never hard-coded. A cancellation can still interrupt external jobs; no remote success is claimed.
+
+The uploaded log begins with python scripts/prepare_data.py. This means the revised workflow supervisor has NOT been used for that attempt. The revised command must be python -u scripts/run_preparation.py --spacing-m "$SPACING_M" --deadline-seconds 1200. Replace the workflow AND start a NEW Run workflow, rather than rerunning an old attempt.
 
 ## Apply
 Extract this repair ZIP. Copy its files into the existing repository at their exact relative paths, replacing the matching files. Keep all other existing repository files. Do not flatten scripts/ or tests/. No data or reference files should be removed.
@@ -23,7 +30,7 @@ Commit the changes. Start a NEW Actions > Prepare real planner data > Run workfl
 - Original full CDF, all 24 numeric fixtures, candidate source/hash/access checks and fail-closed build guard remain in force. Missing data never become safe candidates.
 
 ## Verification
-46 software tests passed, including all 24 real numerical terrain fixtures (within the numerical test suite), complete original-vs-indexed synthetic access-screening parity, shared polygon edges, random polygon/road distance parity, child success/failure, heartbeat/deadline termination, API and deployment guards.
+49 software tests passed, including all 24 real numerical terrain fixtures (within the numerical test suite), complete original-vs-indexed synthetic access-screening parity, shared polygon edges, random polygon/road distance parity, child success/failure, heartbeat/deadline termination, API and deployment guards. New tests verify streamed content/checksum parity, bounded conversion batches without full-frame serialization or full-file reads, and preservation of previous evidence/temporary-file cleanup on serialization failure.
 Python compilation and workflow YAML parsing passed. Synthetic test inputs are not observations and are not bundled as real candidate data.
 
 This repair has not been committed to the remote repository or run in GitHub Actions. Full live OSM preparation and subsequent Render readiness remain to be verified after applying it. No scientific validation is claimed. If external cancellation recurs, download the preparation diagnostics artifact (if teardown completed) and the job logs; the last logged stage will locate the interruption.

@@ -4,6 +4,50 @@ from datetime import datetime, timezone
 import json, hashlib
 
 
+def save_osm_evidence(features, path, chunk_size=500):
+    """Stream full source features and SHA-256 with bounded conversion batches.
+
+    GeoDataFrame.to_json() and iterfeatures() on the complete wide OSM frame
+    materialize large object arrays. Call iterfeatures only on small slices.
+    Never read the completed multi-hundred-MB evidence file back into memory.
+    """
+    import os
+    import tempfile
+    target = Path(path)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    if chunk_size < 1:
+        raise ValueError('Evidence chunk size must be positive')
+    digest = hashlib.sha256()
+    count = 0
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='wb', dir=target.parent, prefix=target.name+'.', suffix='.tmp', delete=False) as out:
+            temporary = Path(out.name)
+
+            def write(text):
+                payload = text.encode('utf-8')
+                out.write(payload)
+                digest.update(payload)
+
+            write('{"type":"FeatureCollection","features":[')
+            for start in range(0, len(features), chunk_size):
+                # OSM frames have many sparse tag columns: do not repeat every
+                # absent tag as null for every one of the 455k source features.
+                for feature in features.iloc[start:start+chunk_size].iterfeatures(na='drop'):
+                    if count:
+                        write(',')
+                    write(json.dumps(feature, ensure_ascii=False, allow_nan=False, separators=(',', ':')))
+                    count += 1
+                if count % 10000 == 0 or count == len(features):
+                    print(f'Stage: saved OSM evidence {count:,}/{len(features):,} features', flush=True)
+            write(']}')
+        os.replace(temporary, target)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+    return {'sha256': digest.hexdigest(), 'feature_count': count, 'bytes': target.stat().st_size}
+
+
 def indexed_within(points, features):
     """Exact within-union semantics, including shared polygon boundaries."""
     import numpy as np
@@ -66,11 +110,14 @@ def screen(georisk, output, spacing_m=120):
     flagged.drop(columns='geometry').to_csv(csv_path, index=False)
     print('Stage: saving OSM source evidence and checksums', flush=True)
     osm_path = out / 'osm_features.geojson'
-    osm_path.write_text(ns['osm_features'].to_json(), encoding='utf-8')
+    evidence = save_osm_evidence(ns['osm_features'], osm_path)
     meta = {'source': 'OpenStreetMap via original v2 OSMnx2.1 screening, spatial-index adaptation v1, generated without lichen-based pruning',
             'retrieved_at': datetime.now(timezone.utc).isoformat(), 'features': len(ns['osm_features']),
             'geometry_candidates': len(rows), 'screened_eligible_before_numeric_checks': int(flagged.eligible_for_sampling.sum()),
-            'osm_geojson_sha256': hashlib.sha256(osm_path.read_bytes()).hexdigest(),
+            'osm_geojson_sha256': evidence['sha256'],
+            'osm_geojson_bytes': evidence['bytes'],
+            'osm_geojson_feature_count': evidence['feature_count'],
+            'osm_evidence_serialization': 'streamed GeoJSON; absent/null tags omitted; nonmissing source properties and geometry retained',
             'terrain_type': 'unknown: no elevation inferred from risk scores', 'spacing_m': spacing_m,
             'minimum_road_offset_m': 8, 'major_road_exclusion_m': 30, 'minimum_railway_offset_m': 8,
             'source_age': 'current OSM retrieval, not guaranteed complete or legal access',

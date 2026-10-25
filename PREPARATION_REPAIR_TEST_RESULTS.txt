@@ -39,15 +39,18 @@ test_outside_nodata_and_nearest_rounding (test_numeric.NumericTests.test_outside
 test_preparation_never_imports_palette_risk_or_unscreened_access (test_numeric.NumericTests.test_preparation_never_imports_palette_risk_or_unscreened_access) ... ok
 test_deadline_terminates_child_and_prints_heartbeat (test_preparation.PreparationTests.test_deadline_terminates_child_and_prints_heartbeat) ... ok
 test_distance_matches_original_union (test_preparation.PreparationTests.test_distance_matches_original_union) ... ok
+test_failed_serialization_keeps_previous_evidence_and_cleans_temporary (test_preparation.PreparationTests.test_failed_serialization_keeps_previous_evidence_and_cleans_temporary) ... ok
 test_failure_never_becomes_success (test_preparation.PreparationTests.test_failure_never_becomes_success) ... ok
 test_full_access_screening_matches_original_union_method (test_preparation.PreparationTests.test_full_access_screening_matches_original_union_method) ... ok
 test_missing_geometries_remain_unknown_not_safe_distances (test_preparation.PreparationTests.test_missing_geometries_remain_unknown_not_safe_distances) ... ok
 test_random_polygon_parity (test_preparation.PreparationTests.test_random_polygon_parity) ... ok
 test_road_distance_parity (test_preparation.PreparationTests.test_road_distance_parity) ... ok
+test_streamed_evidence_content_count_and_hash (test_preparation.PreparationTests.test_streamed_evidence_content_count_and_hash) ... ok
+test_streaming_never_converts_complete_frame_or_reads_evidence_back (test_preparation.PreparationTests.test_streaming_never_converts_complete_frame_or_reads_evidence_back) ... ok
 test_success_logs_output_and_status (test_preparation.PreparationTests.test_success_logs_output_and_status) ... ok
 test_within_matches_union_including_shared_and_outer_boundaries (test_preparation.PreparationTests.test_within_matches_union_including_shared_and_outer_boundaries) ... ok
 
 ----------------------------------------------------------------------
-Ran 46 tests in 2.450s
+Ran 49 tests in 2.485s
 
 OK
