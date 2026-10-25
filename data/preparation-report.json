@@ -1,0 +1,39 @@
+{
+  "status": {
+    "ready_for_data_serving": true,
+    "real_candidate_rows": 6624,
+    "candidates_sha256": "cd725899b76eb90832e7bd80ffa54360e5d5c432d540a72662b50b22bd97a83b",
+    "reference_version": "georisk-2024-native-features-20m-sampling-v1",
+    "reference_samples": 1473136,
+    "observed_lichen_sites_bundled": 0,
+    "scientific_validation": "not_run"
+  },
+  "numeric_fixture_checks": {
+    "numerical_terrain_fixtures_passed": 24,
+    "not_lichen_observations": true,
+    "fixed_cdf_samples": 1473136,
+    "binary_sha256": "cb1bd7e15d47cbbd9d2a4282108061ca17b5d1600c9e13b78c29934f47309ec7"
+  },
+  "osm_screening": {
+    "source": "OpenStreetMap via original v2 OSMnx2.1 screening, spatial-index adaptation v1, generated without lichen-based pruning",
+    "retrieved_at": "2026-10-25T02:16:24.116170+00:00",
+    "features": 455362,
+    "geometry_candidates": 10201,
+    "screened_eligible_before_numeric_checks": 6624,
+    "osm_geojson_sha256": "ff70c3b0880120e2f4ff9ffecddeb121e51d56f638e8086e0c8eb95759ff0961",
+    "osm_geojson_bytes": 176566029,
+    "osm_geojson_feature_count": 455362,
+    "osm_evidence_serialization": "streamed GeoJSON; absent/null tags omitted; nonmissing source properties and geometry retained",
+    "terrain_type": "unknown: no elevation inferred from risk scores",
+    "spacing_m": 240,
+    "minimum_road_offset_m": 8,
+    "major_road_exclusion_m": 30,
+    "minimum_railway_offset_m": 8,
+    "source_age": "current OSM retrieval, not guaranteed complete or legal access",
+    "method_change": "spatial indices replace region-wide union_all; local boundary unions retain within-union semantics"
+  },
+  "exclusions": {
+    "not_screened_eligible": 3577
+  },
+  "note": "Candidate locations are real numerical/access-screened preparation outputs, not observed lichen sites or permission to visit."
+}

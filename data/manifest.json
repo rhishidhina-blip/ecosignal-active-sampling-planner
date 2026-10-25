@@ -1,0 +1,66 @@
+{
+  "schema": "EcoSignal-planner-candidates-v3",
+  "dataset_version": "candidates-71506299efee",
+  "evidence_kind": "real_candidate_preparation",
+  "source_file": "planner_candidates.csv",
+  "source_sha256": "71506299efee8fba2e6165750e7b4a49dcbd0326e28a6d1b0f8d1e9fde8f765d",
+  "generated_at": "2026-10-25T02:16:24.215250+00:00",
+  "source_rows": 10201,
+  "retained_rows": 6624,
+  "exclusions": {
+    "not_screened_eligible": 3577
+  },
+  "bounds_wgs84": [
+    -78.82763409759329,
+    35.69795304738758,
+    -78.46371247889225,
+    35.97589123264953
+  ],
+  "georisk_reference_version": "georisk-2024-native-features-20m-sampling-v1",
+  "georisk_binary_sha256": "cb1bd7e15d47cbbd9d2a4282108061ca17b5d1600c9e13b78c29934f47309ec7",
+  "georisk_cdf_sha256": "4aa0fbc635c64c0cffd238f6f29fff56a2adb780e80be52d893d23e8714f72b8",
+  "georisk_manifest_sha256": "114ee4b843a8a22b435a9a1e9dbcb0b45191e430bf44ccb0950f83dd60520c31",
+  "georisk_model_sha256": "6ec3a4a5e8cd3453f10f8f6b4b84b16dc87fcecccfbf7b0aa5e122bf62c5736d",
+  "source_dem_sha256": {
+    "2015": "313107f85c3cc567b0fd6cec11685601f7f77ce55267b8f810f0cb2c29b0db9f",
+    "2022": "f17e9be442c41641cc32e8e1cace19ad19578c43d09c57fdb4d7c23b8a457d71",
+    "2024": "2c2e666c2965636c788067383ccc9c456ad8a9c76169472590fca621bb3371cf"
+  },
+  "sampling": "nearest20m lattice point, no interpolation; fixed full sampled-cohort CDF, not full1m-pixel CDF",
+  "screening_source": "OpenStreetMap via original v2 OSMnx2.1 screening, spatial-index adaptation v1, generated without lichen-based pruning",
+  "screening_date": "2026-10-25T02:16:24.116170+00:00",
+  "historical_change_provenance": null,
+  "dropped_legacy_fields": [
+    "risk_score",
+    "uncertainty_score",
+    "sparsity_score",
+    "control_score",
+    "priority_score",
+    "terrain_diversity_score",
+    "lichen_stress"
+  ],
+  "warnings": [
+    "Original candidate pool may already exclude sites near old sample points. For unbiased new coverage, regenerate geometry without old observation-based pruning.",
+    "No chlorosis/nitrophyte/growth-form tolerance values were invented.",
+    "Access labels are not permission. Unknown or missing safety distances fail closed."
+  ],
+  "candidates_sha256": "cd725899b76eb90832e7bd80ffa54360e5d5c432d540a72662b50b22bd97a83b",
+  "osm_screening": {
+    "source": "OpenStreetMap via original v2 OSMnx2.1 screening, spatial-index adaptation v1, generated without lichen-based pruning",
+    "retrieved_at": "2026-10-25T02:16:24.116170+00:00",
+    "features": 455362,
+    "geometry_candidates": 10201,
+    "screened_eligible_before_numeric_checks": 6624,
+    "osm_geojson_sha256": "ff70c3b0880120e2f4ff9ffecddeb121e51d56f638e8086e0c8eb95759ff0961",
+    "osm_geojson_bytes": 176566029,
+    "osm_geojson_feature_count": 455362,
+    "osm_evidence_serialization": "streamed GeoJSON; absent/null tags omitted; nonmissing source properties and geometry retained",
+    "terrain_type": "unknown: no elevation inferred from risk scores",
+    "spacing_m": 240,
+    "minimum_road_offset_m": 8,
+    "major_road_exclusion_m": 30,
+    "minimum_railway_offset_m": 8,
+    "source_age": "current OSM retrieval, not guaranteed complete or legal access",
+    "method_change": "spatial indices replace region-wide union_all; local boundary unions retain within-union semantics"
+  }
+}

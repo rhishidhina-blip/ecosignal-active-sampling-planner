@@ -1,9 +1,10 @@
 {
   "code_ready": true,
-  "ready_for_data_serving": false,
-  "real_candidate_rows_bundled": 0,
-  "reason": "Real access-screened candidate export not supplied. Run the included manual GitHub preparation workflow or copy the real candidate files from Colab.",
+  "ready_for_data_serving": true,
+  "real_candidate_rows": 6624,
+  "candidates_sha256": "cd725899b76eb90832e7bd80ffa54360e5d5c432d540a72662b50b22bd97a83b",
+  "reference_version": "georisk-2024-native-features-20m-sampling-v1",
   "reference_samples": 1473136,
-  "observed_lichen_rows_bundled": 0,
+  "observed_lichen_sites_bundled": 0,
   "scientific_validation": "not_run"
 }
