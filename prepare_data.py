@@ -8,14 +8,18 @@ from verify_data import verify
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('--spacing-m',type=int,default=240,choices=[120,240]);args=p.parse_args()
+ print('Stage: verifying numeric binary, full fixed CDF and 24 terrain fixtures',flush=True)
  geo=NumericGeoRisk(ROOT/'reference/georisk');terrain=geo.check_fixtures(ROOT/'reference/georisk/fixtures.json')
  csv_path,osm=screen(geo,ROOT/'.preparation-cache',spacing_m=args.spacing_m)
  with tempfile.TemporaryDirectory(prefix='candidate-prep-',dir=ROOT) as tmp:
+  print('Stage: preparing canonical candidate records',flush=True)
   dest=Path(tmp);rows,meta=prepare(csv_path,geo,dest,screening_source=osm['source'],screening_date=osm['retrieved_at'])
   if not rows:raise ValueError('No real candidates passed current OSM/numeric checks. Existing data have not been overwritten.')
   meta['osm_screening']=osm;(dest/'manifest.json').write_text(json.dumps(meta,indent=2))
+  print('Stage: validating every candidate against actual numeric terrain and fixed CDF',flush=True)
   status=verify(dest);report={'status':status,'numeric_fixture_checks':terrain,'osm_screening':osm,'exclusions':meta['exclusions'],'note':'Candidate locations are real numerical/access-screened preparation outputs, not observed lichen sites or permission to visit.'}
   (dest/'preparation-report.json').write_text(json.dumps(report,indent=2))
+  print(f'Stage: all checks passed; saving {len(rows):,} real candidate locations',flush=True)
   data=ROOT/'data';data.mkdir(exist_ok=True)
   for name in ['candidates.json','manifest.json','preparation-report.json']:shutil.copyfile(dest/name,data/name)
  (ROOT/'BUILD_STATUS.json').write_text(json.dumps({'code_ready':True,**status},indent=2))

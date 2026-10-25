@@ -1,0 +1,53 @@
+/tmp/ecosignal-prep-fix/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_bad_auth (test_api.APITests.test_bad_auth) ... ok
+test_missing_server_token (test_api.APITests.test_missing_server_token) ... ok
+test_request_bounds_and_unknown_fields (test_api.APITests.test_request_bounds_and_unknown_fields) ... ok
+test_unavailable_real_data_returns_503 (test_api.APITests.test_unavailable_real_data_returns_503) ... ok
+test_valid_contract_with_explicit_synthetic_engine_injection (test_api.APITests.test_valid_contract_with_explicit_synthetic_engine_injection) ... ok
+test_missing_data_cannot_be_marked_ready (test_deployment.DeploymentTests.test_missing_data_cannot_be_marked_ready) ... ok
+test_preparation_workflow_is_explicitly_manual_and_does_not_include_a_secret (test_deployment.DeploymentTests.test_preparation_workflow_is_explicitly_manual_and_does_not_include_a_secret) ... ok
+test_render_configuration_selects_light_runtime_and_build_guard (test_deployment.DeploymentTests.test_render_configuration_selects_light_runtime_and_build_guard) ... ok
+test_synthetic_pool_cannot_pass_build_guard (test_deployment.DeploymentTests.test_synthetic_pool_cannot_pass_build_guard) ... ok
+test_actual_adaptation_changes_plan_after_accepted_site (test_engine.EngineTests.test_actual_adaptation_changes_plan_after_accepted_site) ... ok
+test_boundaries_inputs_and_versioning (test_engine.EngineTests.test_boundaries_inputs_and_versioning) ... ok
+test_conflicting_coordinates_do_not_join (test_engine.EngineTests.test_conflicting_coordinates_do_not_join) ... ok
+test_contributions_sum_and_range (test_engine.EngineTests.test_contributions_sum_and_range) ... ok
+test_current_profile_does_not_relabel_missing_change_as_zero (test_engine.EngineTests.test_current_profile_does_not_relabel_missing_change_as_zero) ... ok
+test_duplicate_observation_ids_invalidate_every_copy (test_engine.EngineTests.test_duplicate_observation_ids_invalidate_every_copy) ... ok
+test_exact_30day_freshness_and_alignment (test_engine.EngineTests.test_exact_30day_freshness_and_alignment) ... ok
+test_excluded_access_never_recommended (test_engine.EngineTests.test_excluded_access_never_recommended) ... ok
+test_filter_uses_full_candidate_pool (test_engine.EngineTests.test_filter_uses_full_candidate_pool) ... ok
+test_full_profile_requires_historical_provenance (test_engine.EngineTests.test_full_profile_requires_historical_provenance) ... ok
+test_historical_profile_rejects_projection_and_accepts_attributed_observed_change (test_engine.EngineTests.test_historical_profile_rejects_projection_and_accepts_attributed_observed_change) ... ok
+test_malformed_ids_and_nonfinite_metadata_fail_safely (test_engine.EngineTests.test_malformed_ids_and_nonfinite_metadata_fail_safely) ... ok
+test_missing_confirmation_and_blank_ids_rejected (test_engine.EngineTests.test_missing_confirmation_and_blank_ids_rejected) ... ok
+test_no_observations_is_candidate_only (test_engine.EngineTests.test_no_observations_is_candidate_only) ... ok
+test_no_silent_relaxation_when_candidates_too_close (test_engine.EngineTests.test_no_silent_relaxation_when_candidates_too_close) ... ok
+test_permission_exclusion_and_explicit_optin (test_engine.EngineTests.test_permission_exclusion_and_explicit_optin) ... ok
+test_production_native_export_mapping (test_engine.EngineTests.test_production_native_export_mapping) ... ok
+test_rejected_scan_is_followup_not_coverage (test_engine.EngineTests.test_rejected_scan_is_followup_not_coverage) ... ok
+test_repeat_scans_do_not_increase_independent_site_count (test_engine.EngineTests.test_repeat_scans_do_not_increase_independent_site_count) ... ok
+test_spacing_and_caps (test_engine.EngineTests.test_spacing_and_caps) ... ok
+test_stale_future_invalid_or_unzoned_dates_rejected (test_engine.EngineTests.test_stale_future_invalid_or_unzoned_dates_rejected) ... ok
+test_test_records_excluded_by_default (test_engine.EngineTests.test_test_records_excluded_by_default) ... ok
+test_unknown_confidence_is_not_imputed (test_engine.EngineTests.test_unknown_confidence_is_not_imputed) ... ok
+test_weights_and_limits (test_engine.EngineTests.test_weights_and_limits) ... ok
+test_zero_coverage_is_valid (test_engine.EngineTests.test_zero_coverage_is_valid) ... ok
+test_all24_real_numeric_fixtures_and_full_cdf (test_numeric.NumericTests.test_all24_real_numeric_fixtures_and_full_cdf) ... ok
+test_outside_nodata_and_nearest_rounding (test_numeric.NumericTests.test_outside_nodata_and_nearest_rounding) ... ok
+test_preparation_never_imports_palette_risk_or_unscreened_access (test_numeric.NumericTests.test_preparation_never_imports_palette_risk_or_unscreened_access) ... ok
+test_deadline_terminates_child_and_prints_heartbeat (test_preparation.PreparationTests.test_deadline_terminates_child_and_prints_heartbeat) ... ok
+test_distance_matches_original_union (test_preparation.PreparationTests.test_distance_matches_original_union) ... ok
+test_failure_never_becomes_success (test_preparation.PreparationTests.test_failure_never_becomes_success) ... ok
+test_full_access_screening_matches_original_union_method (test_preparation.PreparationTests.test_full_access_screening_matches_original_union_method) ... ok
+test_missing_geometries_remain_unknown_not_safe_distances (test_preparation.PreparationTests.test_missing_geometries_remain_unknown_not_safe_distances) ... ok
+test_random_polygon_parity (test_preparation.PreparationTests.test_random_polygon_parity) ... ok
+test_road_distance_parity (test_preparation.PreparationTests.test_road_distance_parity) ... ok
+test_success_logs_output_and_status (test_preparation.PreparationTests.test_success_logs_output_and_status) ... ok
+test_within_matches_union_including_shared_and_outer_boundaries (test_preparation.PreparationTests.test_within_matches_union_including_shared_and_outer_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 2.450s
+
+OK
