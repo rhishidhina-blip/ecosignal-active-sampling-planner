@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ecosignal-adaptive-planner
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python scripts/verify_data.py
+    startCommand: python run_server.py
+    healthCheckPath: /health
+    envVars:
+      - key: PLANNER_API_TOKEN
+        generateValue: true

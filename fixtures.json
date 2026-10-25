@@ -1,0 +1,242 @@
+[
+  {
+    "latitude": 35.97437451872878,
+    "longitude": -78.55150496565449,
+    "row": 4,
+    "column": 1242,
+    "quantized_raw": 3919,
+    "raw_score": 0.3919,
+    "percentile": 54.28202148,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.92899722881801,
+    "longitude": -78.61869081137472,
+    "row": 257,
+    "column": 940,
+    "quantized_raw": 2833,
+    "raw_score": 0.2833,
+    "percentile": 25.4619397,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.91777248519176,
+    "longitude": -78.60345314176651,
+    "row": 319,
+    "column": 1009,
+    "quantized_raw": 5659,
+    "raw_score": 0.5659,
+    "percentile": 79.56916401,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.90944407396066,
+    "longitude": -78.59241497490305,
+    "row": 365,
+    "column": 1059,
+    "quantized_raw": 6365,
+    "raw_score": 0.6365,
+    "percentile": 85.42313812,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.90235529032753,
+    "longitude": -78.779891448404,
+    "row": 407,
+    "column": 213,
+    "quantized_raw": 5351,
+    "raw_score": 0.5351,
+    "percentile": 76.50189799,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.89492743278114,
+    "longitude": -78.76019461236528,
+    "row": 448,
+    "column": 302,
+    "quantized_raw": 5204,
+    "raw_score": 0.5204,
+    "percentile": 74.86586439,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.886873250677716,
+    "longitude": -78.63749724957675,
+    "row": 491,
+    "column": 856,
+    "quantized_raw": 5297,
+    "raw_score": 0.5297,
+    "percentile": 75.91715904,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.878426267085146,
+    "longitude": -78.53830482397147,
+    "row": 536,
+    "column": 1304,
+    "quantized_raw": 3047,
+    "raw_score": 0.3047,
+    "percentile": 31.69978875,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.869718402938496,
+    "longitude": -78.52395884016485,
+    "row": 584,
+    "column": 1369,
+    "quantized_raw": 3678,
+    "raw_score": 0.3678,
+    "percentile": 48.81395879,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.86159082348391,
+    "longitude": -78.68610810486183,
+    "row": 632,
+    "column": 637,
+    "quantized_raw": 4895,
+    "raw_score": 0.4895,
+    "percentile": 71.01055164,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.85336369810366,
+    "longitude": -78.71248983350844,
+    "row": 678,
+    "column": 518,
+    "quantized_raw": 2534,
+    "raw_score": 0.2534,
+    "percentile": 17.02979223,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.84477418792628,
+    "longitude": -78.55377396219318,
+    "row": 723,
+    "column": 1235,
+    "quantized_raw": 2600,
+    "raw_score": 0.26,
+    "percentile": 18.82236263,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.836628766388,
+    "longitude": -78.59588147891692,
+    "row": 769,
+    "column": 1045,
+    "quantized_raw": 3234,
+    "raw_score": 0.3234,
+    "percentile": 37.06147973,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.827477181296906,
+    "longitude": -78.6087659050238,
+    "row": 820,
+    "column": 987,
+    "quantized_raw": 2352,
+    "raw_score": 0.2352,
+    "percentile": 12.33986543,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.81750085537644,
+    "longitude": -78.53953805030204,
+    "row": 874,
+    "column": 1300,
+    "quantized_raw": 9102,
+    "raw_score": 0.9102,
+    "percentile": 98.31841731,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.807495560785924,
+    "longitude": -78.56393827859468,
+    "row": 930,
+    "column": 1190,
+    "quantized_raw": 2734,
+    "raw_score": 0.2734,
+    "percentile": 22.60551639,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.79736788635629,
+    "longitude": -78.55492063052864,
+    "row": 986,
+    "column": 1231,
+    "quantized_raw": 3496,
+    "raw_score": 0.3496,
+    "percentile": 44.25361949,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.787430875172376,
+    "longitude": -78.73219385096924,
+    "row": 1044,
+    "column": 430,
+    "quantized_raw": 3329,
+    "raw_score": 0.3329,
+    "percentile": 39.76238446,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.776118972544296,
+    "longitude": -78.67648506686295,
+    "row": 1106,
+    "column": 682,
+    "quantized_raw": 7428,
+    "raw_score": 0.7428,
+    "percentile": 91.9547143,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.76413622726524,
+    "longitude": -78.53829347515062,
+    "row": 1170,
+    "column": 1307,
+    "quantized_raw": 8246,
+    "raw_score": 0.8246,
+    "percentile": 95.5657183,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.752239712817584,
+    "longitude": -78.58900495151094,
+    "row": 1237,
+    "column": 1078,
+    "quantized_raw": 1831,
+    "raw_score": 0.1831,
+    "percentile": 2.71930087,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.740104339014366,
+    "longitude": -78.52383676946272,
+    "row": 1303,
+    "column": 1373,
+    "quantized_raw": 8285,
+    "raw_score": 0.8285,
+    "percentile": 95.70772827,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.72751890115326,
+    "longitude": -78.53253307616211,
+    "row": 1373,
+    "column": 1334,
+    "quantized_raw": 7006,
+    "raw_score": 0.7006,
+    "percentile": 89.6330685,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  },
+  {
+    "latitude": 35.700215628673554,
+    "longitude": -78.51169480678728,
+    "row": 1524,
+    "column": 1429,
+    "quantized_raw": 1983,
+    "raw_score": 0.1983,
+    "percentile": 4.76004931,
+    "source": "real GeoRisk numerical inference sample; not a biological observation"
+  }
+]

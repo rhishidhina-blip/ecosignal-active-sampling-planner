@@ -1,0 +1,9 @@
+{
+  "code_ready": true,
+  "ready_for_data_serving": false,
+  "real_candidate_rows_bundled": 0,
+  "reason": "Real access-screened candidate export not supplied. Run the included manual GitHub preparation workflow or copy the real candidate files from Colab.",
+  "reference_samples": 1473136,
+  "observed_lichen_rows_bundled": 0,
+  "scientific_validation": "not_run"
+}

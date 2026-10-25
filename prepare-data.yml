@@ -1,0 +1,50 @@
+name: Prepare real planner data
+on:
+  workflow_dispatch:
+    inputs:
+      spacing_m:
+        description: Candidate grid spacing in metres (240 is the bounded default)
+        type: choice
+        options: ['240', '120']
+        default: '240'
+permissions:
+  contents: write
+concurrency:
+  group: prepare-planner-data
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-preparation.txt
+      - name: Install preparation dependencies
+        run: python -m pip install -r requirements-preparation.txt
+      - name: Verify engine/API and all 24 real terrain fixtures
+        run: python -m unittest discover -s tests -v
+      - name: Prepare actual GeoRisk plus OpenStreetMap candidate pool
+        env:
+          SPACING_M: ${{ inputs.spacing_m }}
+        run: python scripts/prepare_data.py --spacing-m "$SPACING_M"
+      - name: Validate data and produce importable backend ZIP
+        run: |
+          python scripts/verify_data.py
+          python scripts/export_zip.py releases/EcoSignal_Adaptive_Planner_Render.zip
+      - name: Commit real candidate files and ZIP to this repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add BUILD_STATUS.json data/candidates.json data/manifest.json data/preparation-report.json releases/EcoSignal_Adaptive_Planner_Render.zip
+          if ! git diff --cached --quiet; then
+            git commit -m "Prepare verified real EcoSignal planner candidate data"
+            git push
+          fi

@@ -1,0 +1,18 @@
+{
+  "artifact": "EcoSignal adaptive planner Render repository",
+  "software_tests_passed": 37,
+  "software_test_failures": 0,
+  "numerical_terrain_fixtures_passed": 24,
+  "fixed_cdf_samples": 1473136,
+  "binary_sha256": "cb1bd7e15d47cbbd9d2a4282108061ca17b5d1600c9e13b78c29934f47309ec7",
+  "source_notebook_sha256": "d6c740e5522fbcd0027b489b9642dff31d7680cf3ecd10aa4c96461b7c7da2c2",
+  "python_syntax": "all compiled",
+  "yaml_syntax": "both parsed",
+  "missing_data_build_guard": "correctly refuses deployment",
+  "candidate_rows_bundled": 0,
+  "observed_lichen_records_bundled": 0,
+  "live_OSM_preparation": "not_run",
+  "live_Render_deployment": "not_run",
+  "independent_scientific_validation": "not_run",
+  "secrets_bundled": false
+}

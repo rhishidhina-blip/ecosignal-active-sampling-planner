@@ -1,0 +1,17 @@
+{
+  "method_version": "EcoSignal-Adaptive-Planner-v3.0.0",
+  "profile": "current_georisk_review_v1",
+  "recommendations": 10,
+  "minimum_spacing_m": 120,
+  "exclude_near_accepted_m": 30,
+  "distance_cap_m": 750,
+  "review_radius_m": 150,
+  "site_join_tolerance_m": 25,
+  "maximum_age_days": 30,
+  "stratum_match_m": 200,
+  "max_school": 4,
+  "max_roadside": 3,
+  "max_other_type": 3,
+  "max_permission": 4,
+  "include_permission_required": false
+}
